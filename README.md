@@ -4,7 +4,7 @@ Installs and manages the configuration of Home Assistant on Archlinux
 
 ## Requirements
 
-- [https://github.com/cdown/ansible-aur](AUR module)
+- pip3
 
 ## Role Variables
 

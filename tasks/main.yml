@@ -6,11 +6,18 @@
     proto: tcp
   when: homeassistant_manage_ufw
 
-- name: Install home-assistant from the aur
-  aur: name=home-assistant
-  become: yes
-  become_user: pacaur-builder
+- name: Install homeassistant from pip
+  pip:
+    executable: pip3
+    name: homeassistant
+    state: latest
   notify: restart home-assistant
+
+- name: Ensure home-assistant service file is present
+  template:
+    src: home-assistant.service.j2
+    dest: /etc/systemd/system/home-assistant.service
+    state: present
 
 - name: Ensure hass config directory exists
   file:
