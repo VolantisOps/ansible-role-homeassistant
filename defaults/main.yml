@@ -1,0 +1,58 @@
+---
+homeassistant_name: Home
+homeassistant_base_url: homeassistant:8123
+homeassistant_latitude: 40.000
+homeassistant_longitude: -80.000
+homeassistant_elevation: 600
+homeassistant_unit_system: imperial
+homeassistant_time_zone: America/Chicago
+homeassistant_enable_introduction: true
+homeassistant_enable_frontend: true
+homeassistant_enable_config_ui: true
+homeassistant_enable_updater: true
+homeassistant_enable_discovery: true
+homeassistant_enable_conversation: true
+homeassistant_enable_history: true
+homeassistant_enable_logbook: true
+homeassistant_enable_sun_tracking: true
+homeassistant_enable_upnp: true
+homeassistant_tts_platform: google
+homeassistant_api_password: ''
+homeassistant_ecobee_api_key: ''
+homeassistant_digital_ocean_access_token: ''
+homeassistant_ifttt_key: ''
+homeassistant_enable_nest_protect: false
+homeassistant_nest_client_id: ''
+homeassistant_nest_client_secret: ''
+homeassistant_calendars: []
+#  - name: Contacts
+#    cal_id: #contacts@group.v.calendar.google.com
+#    device_id: contacts
+#    track: true
+homeassistant_notify: []
+#  - name: Pushbullet
+#    platform: pushbullet
+#    api_key: ''
+homeassistant_binary_sensor: []
+#  - platform: workday
+#    country: US
+homeassistant_sensor: []
+#  - platform: plex
+#    host: ''
+#    username: ''
+homeassistant_switch: []
+#  - platform: digital_ocean
+#    droplets: []
+homeassistant_download_dir: ''
+homeassistant_google_client_id: ''
+homeassistant_google_client_secret: ''
+homeassistant_groups: {}
+#  default_view:
+#    view: yes
+#    icon: mdi:home 
+#    entities:
+#      - group.kitchen
+#      - group.awesome_people
+#      - group.climate
+homeassistant_manage_ufw: false
+homeassistant_config_dir: /var/lib/hass

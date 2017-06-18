@@ -1,0 +1,35 @@
+---
+- name: Allow homeassistant web port
+  ufw:
+    rule: allow
+    port: 8123
+    proto: tcp
+  when: homeassistant_manage_ufw
+
+- name: Install home-assistant from the aur
+  aur: name=home-assistant
+  become: yes
+  become_user: pacaur-builder
+  notify: restart home-assistant
+
+- name: Ensure hass config directory exists
+  file:
+    path: "{{ homeassistant_config_dir }}"
+    state: directory
+    owner: hass
+    group: hass
+
+- name: Copy hass config files
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ homeassistant_config_dir }}/{{ item }}"
+    owner: hass
+    group: hass
+  with_items:
+    - configuration.yaml
+    - google_calendars.yaml
+    - groups.yaml
+  notify: restart home-assistant
+
+- name: Ensure home-assistant service is running
+  service: name=home-assistant state=started enabled=yes

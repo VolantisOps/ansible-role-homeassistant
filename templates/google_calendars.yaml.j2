@@ -1,0 +1,5 @@
+{% for calendar in homeassistant_calendars %}
+- cal_id: {{ calendar.cal_id }}
+  entities:
+  - {{ calendar|to_nice_yaml}}
+{% endfor %}

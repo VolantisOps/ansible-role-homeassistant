@@ -1,0 +1,126 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: {{ homeassistant_name }}
+  # Location required to calculate the time the sun rises and sets
+  latitude: {{ homeassistant_latitude }}
+  longitude: {{ homeassistant_longitude }}
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: {{ homeassistant_elevation }}
+  # metric for Metric, imperial for Imperial
+  unit_system: {{ homeassistant_unit_system }}
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: {{ homeassistant_time_zone }}
+
+{% if homeassistant_enable_introduction %}
+# Show links to resources in log and frontend
+introduction:
+{% endif %}
+
+{% if homeassistant_enable_frontend %}
+# Enables the frontend
+frontend:
+{% endif %}
+
+{% if homeassistant_enable_config_ui %}
+# Enables configuration UI
+config:
+{% endif %}
+
+http:
+  {% if homeassistant_api_password != '' %}
+  # Uncomment this to add a password (recommended!)
+  api_password: {{ homeassistant_api_password }}
+  {% endif %}
+  {% if homeassistant_base_url %}
+  # Uncomment this if you are using SSL or running in Docker etc
+  base_url: {{ homeassistant_base_url }}
+  {% endif %}
+
+{% if homeassistant_enable_updater %}
+# Checks for available updates
+updater:
+{% endif %}
+
+{% if homeassistant_enable_discovery %}
+# Discover some devices automatically
+discovery:
+{% endif %}
+
+{% if homeassistant_enable_conversation %}
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+{% endif %}
+
+{% if homeassistant_enable_history %}
+# Enables support for tracking state changes over time.
+history:
+{% endif %}
+
+{% if homeassistant_enable_logbook %}
+# View all events in a logbook
+logbook:
+{% endif %}
+
+{% if homeassistant_enable_sun_tracking %}
+# Track the sun
+sun:
+{% endif %}
+
+# Text to speech
+tts:
+  platform: {{ homeassistant_tts_platform }}
+
+{% if homeassistant_enable_upnp %}
+upnp:
+{% endif %}
+
+{% if homeassistant_ecobee_api_key != '' %}
+ecobee:
+  api_key: {{ homeassistant_ecobee_api_key }}
+{% endif %}
+
+{% if homeassistant_digital_ocean_access_token != '' %}
+digital_ocean:
+  access_token: {{ homeassistant_digital_ocean_access_token }}
+{% endif %}
+
+{% if homeassistant_ifttt_key != '' %}
+ifttt:
+  key: {{ homeassistant_ifttt_key }}
+{% endif %}
+
+{% if homeassistant_enable_nest_protect %}
+nest:
+  client_id: {{ homeassistant_nest_client_id }}
+  client_secret: {{ homeassistant_nest_client_secret }}
+  sensors:
+    monitored_conditions:
+      - 'co_status'
+      - 'smoke_status'
+      - 'battery_health'
+{% endif %}
+
+notify:
+{{ homeassistant_notify|to_nice_yaml }}
+
+binary_sensor:
+{{ homeassistant_binary_sensor|to_nice_yaml }}
+
+sensor:
+{{ homeassistant_sensor|to_nice_yaml }}
+
+switch:
+{{ homeassistant_switch|to_nice_yaml }}
+
+{% if homeassistant_download_dir != '' %}
+downloader:
+  download_dir: {{ homeassistant_download_dir }}
+{% endif %}
+
+{% if homeassistant_google_client_id != '' and homeassistant_google_client_secret != '' %}
+google:
+  client_id: {{ homeassistant_google_client_id }}
+  client_secret: {{ homeassistant_google_client_secret }}
+{% endif %}
+
+group: !include groups.yaml
